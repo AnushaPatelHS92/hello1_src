@@ -9,8 +9,9 @@ git clone "https:///$MACHINE_USER_TOKEN@github.com/AnushaPatelHS92/hello1_webser
 cd hello1_webserver/
 cp ../Index.html .
 git add --all
-git commit -m "$(date)"
+git commit -m "$(date)" || true 
 git push
 
+cd ..
 rm -rf hello1_webserver/
 echo "done $0 }"
