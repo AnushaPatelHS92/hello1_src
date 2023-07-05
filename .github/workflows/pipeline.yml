@@ -15,25 +15,24 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  pipeline:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    env:
+      MACHINE_USER_NAME: ${{ secrets.MACHINE_USER_NAME}}
+      MACHINE_USER_TOKEN: ${{ secrets.MACHINE_USER_TOKEN}}
 
-  pipeline_all:
-      
-   env:
-     MACHINE_USER_NAME: ${{ secrets.MACHINE_USER_NAME}}
-     MACHINE_USER_TOKEN: ${{ secrets.MACHINE_USER_TOKEN}}
-  
-   runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
 
+      - name: build
+        run: ./pipeline/build.sh
 
-  steps:
-    - uses: actions/checkout@v3
+      - name: deploy
+        run: ./pipeline/test.sh
 
-    - name: Build
-      run: ./pipeline/build.sh
-
-    - name: test
-      run: ./pipeline/test.sh
-
-    - name: deploy
-      run: ./pipeline/deploy.sh
+      - name: deploy
+        run: ./pipeline/deploy.sh
 
