@@ -3,7 +3,6 @@
 set -e
 
 echo "hallo" ;
-exit 246
 
 cd gibtsnicht || true
 
