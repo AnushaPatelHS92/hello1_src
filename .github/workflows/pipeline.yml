@@ -25,15 +25,15 @@ jobs:
    runs-on: ubuntu-latest
 
 
-    steps:
-      - uses: actions/checkout@v3
+  steps:
+    - uses: actions/checkout@v3
 
-      - name: Build
-        run: ./pipeline/build.sh
+    - name: Build
+      run: ./pipeline/build.sh
 
-      - name: test
-        run: ./pipeline/test.sh
+    - name: test
+      run: ./pipeline/test.sh
 
-      - name: deploy
-        run: ./pipeline/deploy.sh
+    - name: deploy
+      run: ./pipeline/deploy.sh
 
